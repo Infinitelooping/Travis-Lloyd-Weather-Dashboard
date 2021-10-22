@@ -20,14 +20,16 @@
 
     <!-- holds weather dashboard information and input for city/search history-->
 
-    <body>
+    <main class = "row">
         <!-- city input and search history -->
-        <section>
+        <section id = "search-section" class = "col-3 border border-primary">
             <!-- Input textarea and submit button -->
-            <form>
-
+            <h2>Search For A City:</h2>
+            <form id = "form">
+                <input id = "input-field" type = "text" placeholder = "Kansas City"/>
+                <button id = "btn">Search</button>
             </form>
-            <!-- search history -->
+            <!-- search history -->    
             <div>
 
             </div>
@@ -35,10 +37,10 @@
         </section>
 
         <!-- weather dashboard -->
-        <section>
+        <section id = "display-section" class = "col border border-primary ">
             <!-- city: date, temp, wind, humidity, UV index *single row with col holding the whole row*-->
-            <div class="row">
-                <div class="col">
+            <div id = "city-summary" class="row">
+                <div class="col border border-secondary">
 
                 </div>
             </div>
@@ -47,32 +49,70 @@
             <div>
                 <!-- header 5 day forecast-->
                 <div class="row">
-                    <div class="col">
-                        <h4></h4>
+                    <div class="col border border-secondary">
+                        <h4>5-Day Forecast:</h4>
                     </div>
                 </div>
                 <!-- 5 cards -->
                 <div class="row">
                     <!-- card 1 -->
-                    <div class="col">
-
-                    </div>
+                    <div class="card col" style="width: 18rem; margin: 1rem;">
+                        <div class="card-body">
+                          <h5 class="card-title">Card title</h5>
+                          <ul>
+                              <li>Temp:</li>
+                              <li>Wind:</li>
+                              <li>Humidity:</li>
+                          </ul>
+                        </div>
+                      </div>
                     <!-- card 2 -->
-                    <div class="col">
-
-                    </div>
+                    <div class="card col" style="width: 18rem; margin: 1rem;">
+                        <div class="card-body">
+                          <h5 class="card-title">Card title</h5>
+                          <ul>
+                              <li>Temp:</li>
+                              <li>Wind:</li>
+                              <li>Humidity:</li>
+    
+                          </ul>
+                        </div>
+                      </div>
                     <!-- card 3 -->
-                    <div class="col">
-
-                    </div>
+                    <div class="card col" style="width: 18rem; margin: 1rem;">
+                        <div class="card-body">
+                          <h5 class="card-title">Card title</h5>
+                          <ul>
+                              <li>Temp:</li>
+                              <li>Wind:</li>
+                              <li>Humidity</li>
+                    
+                          </ul>
+                        </div>
+                      </div>
                     <!-- card 4 -->
-                    <div class="col">
-
-                    </div>
+                    <div class="card col" style="width: 18rem; margin: 1rem;">
+                        <div class="card-body">
+                          <h5 class="card-title">Card title</h5>
+                          <ul>
+                              <li>Temp:</li>
+                              <li>Wind:</li>
+                              <li>Humidity:</li>
+                        
+                          </ul>
+                        </div>
+                      </div>
                     <!-- card 5 -->
-                    <div class="col">
-
-                    </div>
+                    <div class="card col" style="width: 18rem; margin: 1rem;">
+                        <div class="card-body">
+                          <h5 class="card-title">Card title</h5>
+                          <ul>
+                              <li>Temp:</li>
+                              <li>wind:</li>
+                              <li>Humidity:</li>
+                          </ul>
+                        </div>
+                      </div>
 
                 </div>
 
@@ -82,7 +122,7 @@
 
 
     <script href ="./assets/js/script.js"></script>
-    </body>
+    </main>
 
 </body>
 

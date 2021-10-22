@@ -1,0 +1,64 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.title-header {
+    width: 100%;
+    background-color: purple;
+    text-align: center;
+}
+main {
+    height: 500px;
+}
+
+h2 {
+    font-size: 24px;
+}
+#search-section {
+    margin-left: 20px;
+}
+
+#display-section {
+    margin-right: 20px;
+}
+
+#form {
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    height: 50px;
+}
+#city-summary {
+    height: 50%;
+}
+#input-field {
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+#btn {
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 25px;
+    background-color: purple;
+    border-radius: 4px;
+    border-color: rebeccapurple;
+}
+
+.card {
+    height: 100%;
+    padding: 0px;
+}
+
+.card-text {
+    font-size: 16px;
+    line-height: 24px;
+    padding: 0px;
+}
+
+li {
+    list-style-type: none;
+}
