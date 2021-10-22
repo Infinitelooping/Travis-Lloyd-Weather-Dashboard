@@ -4,9 +4,8 @@ var historyContainer = document.querySelector("#history-bar");
 
 
 //display weather function
-function displayWeather(data, cityEl, event) {
-    event.preventDefault();
-    console.log(data, cityEl)
+function displayWeather(results, cityEl) {
+    console.log(results.data[0].latitude, cityEl)
 }
 
 //history button display
@@ -26,13 +25,13 @@ btnEl.addEventListener("click", function (event) {
     //grab city from form
     var cityEl = document.querySelector("#input-field").value;
     console.log(cityEl);
-    var weatherUrl = "api.openweathermap.org/data/2.5/weather?q="+cityEl+"&appid=" + "dbe7ee0b24de9fd1a9ce2d793bf721a6";
+    var weatherUrl ="http://api.positionstack.com/v1/forward?access_key=c4bf58a019f128c64c20b6e41582639b&query=" + cityEl + "&limit=1";
 
     // make a request to the url
     fetch(weatherUrl).then(function (response) {
         if (response.ok) {
-            response.json().then(function (data) {
-                displayWeather(data, cityEl);
+            response.json().then(function (results) {
+                displayWeather(results, cityEl);
             });
         } else {
             alert("Error: City not found");
