@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Dashboard</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">    
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 
@@ -25,7 +25,7 @@
         <!-- city input and search history -->
         <section id="search-section" class="col-3">
             <!-- Input textarea and submit button -->
-            <div class = "search-container">
+            <div class="search-container">
                 <h2>Search For A City:</h2>
                 <form id="form">
                     <input id="input-field" type="text" placeholder="Kansas City" />
@@ -33,7 +33,7 @@
                 </form>
             </div>
             <!-- search history -->
-            <div id="history-bar" class = "history-bar">
+            <div id="history-bar" class="history-bar">
 
             </div>
 
@@ -44,12 +44,12 @@
             <!-- city: date, temp, wind, humidity, UV index *single row with col holding the whole row*-->
             <div id="city-summary" class="row">
                 <div class="col border border-secondary">
-                    <h4 id = "city-title">Atlanta 10/22/21</h4>
+                    <h4 id="city-title">Atlanta 10/22/21</h4>
                     <ul class="summary-list">
-                        <li id = "temp">Temp:</li>
-                        <li id = "wind">Wind:</li>
-                        <li id = "humidity">Humidity:</li>
-                        <li id = "uv">UV Index:</li>
+                        <li id="temp">Temp:</li>
+                        <li id="wind">Wind:</li>
+                        <li id="humidity">Humidity:</li>
+                        <li id="uv">UV Index:</li>
                     </ul>
                 </div>
             </div>
@@ -67,22 +67,22 @@
                     <!-- card 1 -->
                     <div class="card col" style="width: 18rem; height: 8rem; margin: 1rem;">
                         <div class="card-body">
-                            <h6 class="card-title">date 10/22/21</h5>
+                            <h6 id = "day1.1" class="card-title">date 10/22/21</h6>
                                 <ul>
-                                    <li>Temp:</li>
-                                    <li>Wind:</li>
-                                    <li>Humidity: 100%</li>
+                                    <li id = "day1.2">Temp:</li>
+                                    <li id = "day1.3">Wind:</li>
+                                    <li id = "day1.4">Humidity:</li>
                                 </ul>
                         </div>
                     </div>
                     <!-- card 2 -->
                     <div class="card col" style="width: 18rem; height: 8rem; margin: 1rem;">
                         <div class="card-body">
-                            <h5 class="card-title">date 10/22/21</h5>
+                            <h6 id = "day2.1" class="card-title">date 10/22/21</h6>
                             <ul>
-                                <li>Temp:</li>
-                                <li>Wind:</li>
-                                <li>Humidity:</li>
+                                <li id = "day2.2">Temp:</li>
+                                <li id = "day2.3">Wind:</li>
+                                <li id = "day2.4">Humidity:</li>
 
                             </ul>
                         </div>
@@ -90,11 +90,11 @@
                     <!-- card 3 -->
                     <div class="card col" style="width: 18rem; height: 8rem; margin: 1rem;">
                         <div class="card-body">
-                            <h5 class="card-title">date 10/22/21</h5>
+                            <h6 id = "day3.1" class="card-title">date 10/22/21</h6>
                             <ul>
-                                <li>Temp:</li>
-                                <li>Wind:</li>
-                                <li>Humidity</li>
+                                <li id = "day3.2">Temp:</li>
+                                <li id = "day3.3">Wind:</li>
+                                <li id = "day3.4">Humidity</li>
 
                             </ul>
                         </div>
@@ -102,11 +102,11 @@
                     <!-- card 4 -->
                     <div class="card col" style="width: 18rem; height: 8rem; margin: 1rem;">
                         <div class="card-body">
-                            <h5 class="card-title">date 10/22/21</h5>
+                            <h6 id = "day4.1" class="card-title">date 10/22/21</h6>
                             <ul>
-                                <li>Temp:</li>
-                                <li>Wind:</li>
-                                <li>Humidity:</li>
+                                <li id = "day4.2">Temp:</li>
+                                <li id = "day4.3">Wind:</li>
+                                <li id = "day4.4">Humidity:</li>
 
                             </ul>
                         </div>
@@ -114,11 +114,11 @@
                     <!-- card 5 -->
                     <div class="card col" style="width: 18rem; height: 8rem; margin: 1rem;">
                         <div class="card-body">
-                            <h5 class="card-title">date 10/22/21</h5>
+                            <h6 id = "day5.1" class="card-title">date 10/22/21</h6>
                             <ul>
-                                <li>Temp:</li>
-                                <li>wind:</li>
-                                <li>Humidity:</li>
+                                <li id = "day5.2">Temp:</li>
+                                <li id = "day5.3">wind:</li>
+                                <li id = "day5.4">Humidity:</li>
                             </ul>
                         </div>
                     </div>
@@ -130,7 +130,9 @@
         </section>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/luxon/2.0.2/luxon.min.js" integrity="sha512-frUCURIeB0OKMPgmDEwT3rC4NH2a4gn06N3Iw6T1z0WfrQZd7gNfJFbHrNsZP38PVXOp6nUiFtBqVvmCj+ARhw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/luxon/2.0.2/luxon.min.js"
+            integrity="sha512-frUCURIeB0OKMPgmDEwT3rC4NH2a4gn06N3Iw6T1z0WfrQZd7gNfJFbHrNsZP38PVXOp6nUiFtBqVvmCj+ARhw=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="./assets/js/script.js"></script>
     </main>
 

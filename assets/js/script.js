@@ -6,8 +6,26 @@ var btnid = 0;
 
 
 //displays the 5-day forecast to the cards.
-function displayFiveDay() {
-
+function displayFiveDay(results) {
+    for(var i=1;i<=6;i++) {
+        for(var k=1;k<5;k++){
+            var forecastedDayCond = document.getElementById("day" + i + "." + k)
+            switch (k){
+                case 1:
+                    forecastedDayCond.textContent = "Date: " + moment().add(i,'days').format("MM/DD/YYYY");
+                    break;
+                case 2:
+                    forecastedDayCond.textContent = "Temp: " + results.daily[i].temp.max;
+                    break;
+                case 3:
+                    forecastedDayCond.textContent = "Wind: " + results.daily[i].wind_speed;
+                    break;
+                case 4:
+                    forecastedDayCond.textContent = "Temp: " + results.daily[i].humidity;
+                    break;    
+            }
+        }
+    }
 }
 
 //display weather function
@@ -24,7 +42,7 @@ function displayWeather(results, cityEl) {
     humidityEl.textContent = "Humidity: " + results.current.humidity;
     uvEl.textContent = "UV Index: " + results.current.uvi;
 
-    displayFiveDay();
+    displayFiveDay(results);
 }
 
 //history button display
@@ -62,16 +80,13 @@ function getConditions(lon, lat, cityEl) {
             // Notice this `.catch()` getting chained onto the end of the `.then()` method
             alert("Unable to connect to weather site");
         });
-}
-
-//finds the text of a button presses
-// document.addEventListener("click", function() {
-
-// })
+    }
 
 //listening for when search button is pressed
 btnEl.addEventListener("click", function (event) {
     event.preventDefault();
+
+    document.getElementById("display-section").style.display = "block";
     //grab city from form
     var cityEl = document.querySelector("#input-field").value;
     cityEl = cityEl.charAt(0).toUpperCase() + cityEl.slice(1);

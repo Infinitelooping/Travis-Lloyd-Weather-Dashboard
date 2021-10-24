@@ -38,6 +38,7 @@ h5 {
 #display-section {
     margin-right: 20px;
     margin-left: 20px;
+    display: none;
 }
 
 #form {
@@ -62,8 +63,6 @@ h5 {
     background-color: purple;
     border-radius: 4px;
     border-color: rebeccapurple;
-}
-#card-container {
 }
 .card {
     height: 100%;
