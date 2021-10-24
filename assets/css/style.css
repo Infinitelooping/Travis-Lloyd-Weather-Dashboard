@@ -41,6 +41,12 @@ h5 {
     display: none;
 }
 
+#uvi {
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 3px;
+    border-color: green;
+}
 #form {
     margin: 0 auto;
     display: flex;

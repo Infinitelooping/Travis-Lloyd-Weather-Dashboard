@@ -4,7 +4,6 @@ var historyContainer = document.querySelector("#history-bar");
 
 var btnid = 0;
 
-
 //displays the 5-day forecast to the cards.
 function displayFiveDay(results) {
     for(var i=1;i<=6;i++) {
@@ -33,14 +32,26 @@ function displayWeather(results, cityEl) {
     var tempEl = document.getElementById("temp");
     var windEl = document.getElementById("wind");
     var humidityEl = document.getElementById("humidity");
-    var uvEl = document.getElementById("uv");
+    var uvEl = document.getElementById("uvi");
     var city = document.getElementById("city-title");
+
+    if(results.current.uvi >= 0 && results.current.uvi < 3) {
+        uvEl.style.borderColor = "green"
+        uvEl.style.backgroundColor = "green";    
+    } else if (results.current.uvi >= 3 && results.current.uvi < 8) {
+        console.log("its bad out there");
+        uvEl.style.borderColor = "orange";
+        uvEl.style.backgroundColor = "orange";
+    } else {
+        uvEl.style.borderColor = "red";
+        uvEl.style.backgroundColor = "red";    
+    }
 
     city.textContent = cityEl + " " + moment().format("MM/DD/YYYY")
     tempEl.textContent = "Temp: " + results.current.temp;
     windEl.textContent = "Wind: " + results.current.wind_speed;
     humidityEl.textContent = "Humidity: " + results.current.humidity;
-    uvEl.textContent = "UV Index: " + results.current.uvi;
+    uvEl.textContent = results.current.uvi;
 
     displayFiveDay(results);
 }
@@ -51,7 +62,7 @@ function historyButtons(city) {
     newButtonEl.textContent = city;
     newButtonEl.classList.add("btn");
     newButtonEl.setAttribute("id", "btnHistory"+btnid);
-    newButtonEl.style.margin = "10px auto";
+    newButtonEl.style.margin = "5px auto";
     historyContainer.appendChild(newButtonEl);
     btnid++;
     return;
@@ -65,11 +76,6 @@ function getConditions(lon, lat, cityEl) {
     fetch(apiUrl).then(function (response) {
         if (response.ok) {
             response.json().then(function (results) {
-                console.log(results)
-                console.log(results.current.temp);
-                console.log(results.current.uvi);
-                console.log(results.current.humidity);
-                console.log(results.current.wind_speed);
                 displayWeather(results, cityEl);        
             });
         } else {
