@@ -70,7 +70,7 @@ function historyButtons(city) {
 //uses first API to call next API to get weather conditions
 function getConditions(lon, lat, cityEl) {
 
-    var apiUrl ="https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=dbe7ee0b24de9fd1a9ce2d793bf721a6&limit=1";
+    var apiUrl ="http://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=dbe7ee0b24de9fd1a9ce2d793bf721a6&limit=1";
 
     // make a request to the url
     fetch(apiUrl).then(function (response) {
@@ -97,7 +97,7 @@ btnEl.addEventListener("click", function (event) {
     var cityEl = document.querySelector("#input-field").value;
     cityEl = cityEl.charAt(0).toUpperCase() + cityEl.slice(1);
     console.log(cityEl);
-    var weatherUrl ="https://api.positionstack.com/v1/forward?access_key=c4bf58a019f128c64c20b6e41582639b&query=" + cityEl + "&limit=1";
+    var weatherUrl ="http://api.positionstack.com/v1/forward?access_key=c4bf58a019f128c64c20b6e41582639b&query=" + cityEl + "&limit=1";
 
     // make a request to the url
     fetch(weatherUrl).then(function (response) {
