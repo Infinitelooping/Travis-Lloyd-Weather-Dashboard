@@ -25,6 +25,9 @@ h5 {
     font-size: 16px;
     margin: 0;
 }
+h6 {
+    color: white;
+}
 #search-section {
     margin-left: 20px;
 }
@@ -88,6 +91,13 @@ h5 {
 ul {
     margin: 0;
     padding: 0;
+}
+.card-text {
+    color: white;
+}
+
+.card-body li {
+    color: white;
 }
 
 li {
