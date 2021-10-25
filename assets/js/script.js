@@ -97,7 +97,7 @@ btnEl.addEventListener("click", function (event) {
     var cityEl = document.querySelector("#input-field").value;
     cityEl = cityEl.charAt(0).toUpperCase() + cityEl.slice(1);
     console.log(cityEl);
-    var weatherUrl ="http://api.positionstack.com/v1/forward?access_key=c4bf58a019f128c64c20b6e41582639b&query=" + cityEl + "&limit=1";
+    var weatherUrl ="https://api.positionstack.com/v1/forward?access_key=c4bf58a019f128c64c20b6e41582639b&query=" + cityEl + "&limit=1";
 
     // make a request to the url
     fetch(weatherUrl).then(function (response) {
