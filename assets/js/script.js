@@ -15,13 +15,13 @@ function displayFiveDay(results) {
                     forecastedDayCond.textContent = "Date: " + moment().add(i,'days').format("MM/DD/YYYY");
                     break;
                 case 2:
-                    forecastedDayCond.textContent = "Temp: " + results.daily[i].temp.max;
+                    forecastedDayCond.textContent = "Temp: " + results.daily[i].temp.max + " F";
                     break;
                 case 3:
-                    forecastedDayCond.textContent = "Wind: " + results.daily[i].wind_speed;
+                    forecastedDayCond.textContent = "Wind: " + results.daily[i].wind_speed + " MPH";
                     break;
                 case 4:
-                    forecastedDayCond.textContent = "Temp: " + results.daily[i].humidity;
+                    forecastedDayCond.textContent = "Temp: " + results.daily[i].humidity + "%";
                     break;
                 case 5:
                     forecastedDayCond.setAttribute("background-image", "results.daily["+i+"].weather.icon");
@@ -52,9 +52,9 @@ function displayWeather(results, cityEl) {
     }
 
     city.textContent = cityEl + " " + moment().format("MM/DD/YYYY")
-    tempEl.textContent = "Temp: " + results.current.temp;
-    windEl.textContent = "Wind: " + results.current.wind_speed;
-    humidityEl.textContent = "Humidity: " + results.current.humidity;
+    tempEl.textContent = "Temp: " + results.current.temp + " ℉";
+    windEl.textContent = "Wind: " + results.current.wind_speed + " MPH";
+    humidityEl.textContent = "Humidity: " + results.current.humidity + "%";
     uvEl.textContent = results.current.uvi;
 
     displayFiveDay(results);
@@ -68,8 +68,9 @@ function historyButtons(city) {
     newButtonEl.style.margin = "5px auto";
     historyContainer.appendChild(newButtonEl);
 
-    newButtonEl.addEventListener("click", function() {
-        console.log("HI");
+    newButtonEl.addEventListener("click", function(event) {
+        event.preventDefault();
+        apiCall(this.textContent);
     });
     return;
 }
@@ -95,6 +96,33 @@ function getConditions(lon, lat, cityEl) {
         });
     }
 
+// first API call for Long and Lat.
+function apiCall(city) {
+    document.getElementById("display-section").style.display = "block";
+    //grab city from form
+    document.querySelector("#input-field").value = "";
+    var weatherUrl ="https://api.openweathermap.org/geo/1.0/direct?q="+city+",&appid=dbe7ee0b24de9fd1a9ce2d793bf721a6";
+    //dbe7ee0b24de9fd1a9ce2d793bf721a6
+
+    // make a request to the url
+    fetch(weatherUrl).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (results) {
+                console.log(results);
+                lon = results[0].lon;
+                lat = results[0].lat;
+                getConditions(lon, lat, city);         
+            });
+        } else {
+            alert("Error: City not found, you may need to enter the name of a city!:)");
+        }
+    })
+        .catch(function (error) {
+            // Notice this `.catch()` getting chained onto the end of the `.then()` method
+            alert("Unable to connect to weather site");
+        });
+}
+
 //listening for when search button is pressed
 btnEl.addEventListener("click", function (event) {
     event.preventDefault();
@@ -102,6 +130,7 @@ btnEl.addEventListener("click", function (event) {
     document.getElementById("display-section").style.display = "block";
     //grab city from form
     var cityEl = document.querySelector("#input-field").value;
+    document.querySelector("#input-field").value = "";
     cityEl = cityEl.charAt(0).toUpperCase() + cityEl.slice(1);
     console.log(cityEl);
     var weatherUrl ="https://api.openweathermap.org/geo/1.0/direct?q="+cityEl+",&appid=dbe7ee0b24de9fd1a9ce2d793bf721a6";
