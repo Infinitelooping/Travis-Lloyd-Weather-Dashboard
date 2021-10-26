@@ -1,14 +1,17 @@
 //globals
 var btnEl = document.querySelector("#btn");
 var historyContainer = document.querySelector("#history-bar");
+var forecastedDayCond = "";
 
 //displays the 5-day forecast to the cards.
 function displayFiveDay(results) {
-    for(var i=1;i<=6;i++) {
+    for(var i=1;i<6;i++) {
         for(var k=1;k<6;k++){
-            var forecastedDayCond = document.getElementById("day" + i + "." + k)
+            forecastedDayCond = document.getElementById("day" + i + "." + k)
+            console.log(i,k);
             switch (k){
                 case 1:
+                    //console.log(forecastedDayCond);
                     forecastedDayCond.textContent = "Date: " + moment().add(i,'days').format("MM/DD/YYYY");
                     break;
                 case 2:
@@ -66,7 +69,7 @@ function historyButtons(city) {
     historyContainer.appendChild(newButtonEl);
 
     newButtonEl.addEventListener("click", function() {
-
+        console.log("HI");
     });
     return;
 }
