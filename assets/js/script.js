@@ -2,12 +2,10 @@
 var btnEl = document.querySelector("#btn");
 var historyContainer = document.querySelector("#history-bar");
 
-var btnid = 0;
-
 //displays the 5-day forecast to the cards.
 function displayFiveDay(results) {
     for(var i=1;i<=6;i++) {
-        for(var k=1;k<5;k++){
+        for(var k=1;k<6;k++){
             var forecastedDayCond = document.getElementById("day" + i + "." + k)
             switch (k){
                 case 1:
@@ -21,7 +19,10 @@ function displayFiveDay(results) {
                     break;
                 case 4:
                     forecastedDayCond.textContent = "Temp: " + results.daily[i].humidity;
-                    break;    
+                    break;
+                case 5:
+                    forecastedDayCond.setAttribute("background-image", "results.daily["+i+"].weather.icon");
+                    break;        
             }
         }
     }
@@ -61,10 +62,12 @@ function historyButtons(city) {
     var newButtonEl = document.createElement("BUTTON");
     newButtonEl.textContent = city;
     newButtonEl.classList.add("btn");
-    newButtonEl.setAttribute("id", "btnHistory"+btnid);
     newButtonEl.style.margin = "5px auto";
     historyContainer.appendChild(newButtonEl);
-    btnid++;
+
+    newButtonEl.addEventListener("click", function() {
+
+    });
     return;
 }
 //uses first API to call next API to get weather conditions
@@ -76,6 +79,7 @@ function getConditions(lon, lat, cityEl) {
     fetch(apiUrl).then(function (response) {
         if (response.ok) {
             response.json().then(function (results) {
+                console.log(results);
                 displayWeather(results, cityEl);        
             });
         } else {
@@ -97,14 +101,16 @@ btnEl.addEventListener("click", function (event) {
     var cityEl = document.querySelector("#input-field").value;
     cityEl = cityEl.charAt(0).toUpperCase() + cityEl.slice(1);
     console.log(cityEl);
-    var weatherUrl ="http://api.positionstack.com/v1/forward?access_key=c4bf58a019f128c64c20b6e41582639b&query=" + cityEl + "&limit=1";
+    var weatherUrl ="https://api.openweathermap.org/geo/1.0/direct?q="+cityEl+",&appid=dbe7ee0b24de9fd1a9ce2d793bf721a6";
+    //dbe7ee0b24de9fd1a9ce2d793bf721a6
 
     // make a request to the url
     fetch(weatherUrl).then(function (response) {
         if (response.ok) {
             response.json().then(function (results) {
-                lon = results.data[0].longitude;
-                lat = results.data[0].latitude;
+                console.log(results);
+                lon = results[0].lon;
+                lat = results[0].lat;
                 if (cityEl != null && cityEl != "") {
                     historyButtons(cityEl);    
                 }  
