@@ -30,7 +30,24 @@ function displayFiveDay(results) {
         }
     }
 }
+//function to save buttons into local storage
+function saveButtons () {
 
+}
+
+//load buttons
+function loadButtons() {
+    var newButtonEl = document.createElement("BUTTON");
+    newButtonEl.textContent = city;
+    newButtonEl.classList.add("btn");
+    newButtonEl.style.margin = "5px auto";
+    historyContainer.appendChild(newButtonEl);
+
+    newButtonEl.addEventListener("click", function(event) {
+        event.preventDefault();
+        apiCall(this.textContent);
+    });
+}
 //display weather function
 function displayWeather(results, cityEl) {
     var tempEl = document.getElementById("temp");
@@ -72,6 +89,7 @@ function historyButtons(city) {
         event.preventDefault();
         apiCall(this.textContent);
     });
+    saveButtons(city);
     return;
 }
 //uses first API to call next API to get weather conditions
